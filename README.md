@@ -1,4 +1,4 @@
-# fagget_website
+# fagget_api
 > Fagget 前後台Laravel框架後端API
 
 ## Build Setup
