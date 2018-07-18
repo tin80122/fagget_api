@@ -1,0 +1,5 @@
+@mixin image-block($path, $cache:false)
+    @extend %indent
+    background-image: image-url($path, false, $cache)
+    width: image-width($path)
+    height: image-height($path)

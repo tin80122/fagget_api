@@ -1,0 +1,41 @@
+.datetime-range-picker
+  margin-top: -1px
+  .el-date-editor
+    &.el-input
+      width: 150px
+    float: left
+    &:nth-child(1)
+      .el-input__inner
+        +border-radius(4px 0 0 4px)
+    &:last-child
+      .el-input__inner
+        margin-left: -1px
+        +border-radius(0 4px 4px 0)
+  > span
+    display: inline-block
+    background: #f0f0f0
+    width: 42px
+    text-align: center
+    line-height: 38px
+    float: left
+    border: 1px solid #dcdfe6
+    margin-left: -1px
+
+@media screen and (max-width: 562px)
+  .datetime-range-picker
+    .el-date-editor
+      &.el-input
+        width: 100%
+        float: none
+      &:nth-child(1)
+        .el-input__inner
+          +border-radius(4px 4px 0 0)
+      &:last-child
+        .el-input__inner
+          +border-radius(0 0 4px 4px)
+          margin-left: 0px
+          margin-top: -1px
+    > span
+      width: 100%
+      margin-top: -1px
+      margin-left: 0px
