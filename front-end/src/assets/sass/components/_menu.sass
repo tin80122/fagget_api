@@ -1,0 +1,140 @@
+.sf-menu
+  li
+    &.submenu
+      a
+        &.no-child
+          background-image: none
+          border-right: 0
+    a
+      padding-top: 12px
+
+a#menu-icon
+  width: 40px
+  height: 46px
+  position: relative
+  display: none
+  user-select: none
+  cursor: pointer
+  float: left
+  span
+    display: inline-block
+    height: 3px
+    width: 24px
+    +transition(all .3s)
+    background: #BBBBBB
+    position: absolute
+    top: 50%
+    left: 50%
+    +border-radius(1px)
+    +transform(translateY(-50%) translateX(-50%) scale3d(0.8, 0.8, 0.8) translateZ(0))
+    &:before, &:after
+      content: ''
+      display: inline-block
+      position: absolute
+      width: 24px
+      height: 3px
+      +border-radius(1px)
+      transform-origin: 2.85714px center
+      +transition(all .2s)
+      background: #BBBBBB
+    &:before
+      top: -7px
+    &:after
+      bottom: -7px
+    &.cross
+      background: transparent
+      &:before, &:after
+        width: 25px
+        transform-origin: 50% 50%
+      &:before
+        top: 0px
+        +transform(rotate3d(0, 0, 1, -45deg) translateZ(0))
+      &:after
+        bottom: 0px
+        +transform(rotate3d(0, 0, 1, 45deg) translateZ(0))
+
+.mobile-nav
+  position: fixed
+  top: 0
+  margin-top: 46px
+  padding-top: 20px
+  padding-bottom: 30px
+  width: 240px
+  min-height: 600px
+  height: 100vh
+  background-color: #363B40
+  z-index: 10
+  overflow-x: hidden
+  +transform(translateX(0) translateZ(0))
+  +transition(all .2s)
+  ul
+    > li
+      line-height: 1.6em
+      a, p
+        display: block
+        font-size: 1.2em
+        padding: 10px 0px 10px 15px
+        letter-spacing: 2px
+        color: #BBBBBB
+        border-left: 3px solid transparent
+        text-decoration: none
+        cursor: pointer
+        +transition(all .3s)
+        &:hover
+          background-color: darken(#363B40, 10%)
+          border-color: darken(#363B40, 10%)
+        &.avtive
+          border-color: #ED1D24
+          color: #fff
+        &.has-child
+          position: relative
+          &:before
+            width: 29px
+            height: 29px
+            position: absolute
+            display: block
+            top: 50%
+            right: 10px
+            content: ''
+            background-image: url("../static/images/icons/navigation/call_to_action_arrow.png")
+            background-repeat: no-repeat
+            background-position: 95% 50%
+            +transform(translateY(-50%))
+            +transition(all .2s)
+          &.child-active
+            &:before
+              +transition(all .1s)
+              +transform(rotate(90deg) translateY(calc(-50% + 15px)) translateX(-14px))
+      ul
+        > li
+          position: relative
+          a
+            position: relative
+            display: block
+            font-size: 1.1em
+            padding-left: 40px
+            &:before
+              position: absolute
+              top: 50%
+              left: 24px
+              content: ''
+              display: inline-block
+              width: 3px
+              height: 3px
+              border: 1px solid #BBBBBB
+              +border-radius(50%)
+              +transform(translateY(-50%))
+
+
+@media screen and (min-width:768px)
+  .mobile-nav
+    display: none
+
+@media screen and (max-width:767px)
+  a#menu-icon
+    display: inline-block
+  .mobile-nav
+    display: block
+    +transform(translateX(-240px))
+    &.active
+      +transform(translateX(0px))

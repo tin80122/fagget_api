@@ -1,0 +1,15 @@
+.cover
+  position: fixed
+  display: block
+  top: 0
+  left: 0
+  width: 100vw
+  height: 100vh
+  background: rgba(#fff, .8)
+  z-index: 9
+
+.cover-enter-active, .cover-leave-active
+  +transition(opacity .2s ease)
+
+.cover-enter, .cover-leave-to
+  +opacity(0)

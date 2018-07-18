@@ -1,0 +1,189 @@
+.slick-last-posts
+  position: relative
+  margin-top: 30px
+  overflow-x: hidden
+  .slick-slide
+    width: 240px
+    margin-right: 30px
+    &:last-child
+      margin-right: 0
+  figure
+    margin: 0
+    > a
+      text-decoration: none
+    p
+      color: #25282A
+      font-size: 1.2em
+      &:hover
+        text-decoration: underline
+    img
+      width: 100%
+      +opacity(1)
+      +transition(opacity 0.4s ease-in-out 0s)
+      &:hover
+        +opacity(.8)
+    div
+      a
+        color: #ED1C24
+        font-weight: bold
+    span
+        color: #7C7C7C
+        margin-left: 10px
+  .slick-prev, .slick-next
+    position: absolute
+    width: 45px
+    height: 45px
+    background: rgba(66,73,79,0.8)
+    background-position: 0 0
+    top: 48%
+    z-index: 10
+    border: none
+    cursor: pointer
+    &:hover
+      background-color: #ED1C24
+  .slick-prev
+    +transform(translateX(-100%))
+    background-image: url("/static/images/icons/navigation/navigation_arrow_left.png")
+    left: 0
+  .slick-next
+    +transform(translateX(100%))
+    background-image: url("/static/images/icons/navigation/navigation_arrow_right.png")
+    right: 0
+  .prev-enter
+    +animation(leftIn ease)
+    +animation-duration(.2s)
+    +animation-fill-mode(forwards)
+  .prev-leave
+    +animation(leftOut ease)
+    +animation-duration(.2s)
+    +animation-fill-mode(forwards)
+  .next-enter
+    +animation(rightIn ease)
+    +animation-duration(.2s)
+    +animation-fill-mode(forwards)
+  .next-leave
+    +animation(rightOut ease)
+    +animation-duration(.2s)
+    +animation-fill-mode(forwards)
+
+.slick-banner
+  position: relative
+  .slick-banner-prev, .slick-banner-next
+    position: absolute
+    width: 45px
+    height: 45px
+    background: rgba(0,0,0,0.5)
+    background-position: 0 0
+    top: 68.5%
+    z-index: 8
+    border: none
+    cursor: pointer
+    &:hover
+      background-color: #ED1C24
+  .slick-banner-prev
+    background-image: url("/static/images/icons/navigation/navigation_arrow_left.png")
+    right: 45px
+  .slick-banner-next
+    background-image: url("/static/images/icons/navigation/navigation_arrow_right.png")
+    right: 0
+  a
+    display: block
+    position: relative
+  figure
+    margin: 0
+    img
+      width: 100%
+      +opacity(1)
+      +transition(opacity 0.4s ease-in-out 0s)
+      &:hover
+        +opacity(.8)
+  .mobile-title
+    display: none
+  .banner-info
+    width: 100%
+    position: absolute
+    bottom: 0
+    padding: 13px 15px 15px
+    background: rgba(0,0,0,0.5)
+    +box-sizing(border-box)
+    color: #fff
+    span
+      font-weight: bold
+      &.time
+        display: none
+      &:after
+        background: none repeat scroll 0 0 #FFF
+        bottom: 0
+        content: ""
+        display: block
+        height: 2px
+        margin-top: 13px
+        width: 55px
+    p
+      color: #fff
+      padding: 0
+      margin-top: .7em
+      font-size: 1.2em
+      overflow: hidden
+      text-overflow: ellipsis
+      white-space: nowrap
+      &:hover
+        text-decoration: underline
+
+#hzImg
+  display: none !important
+
+
+
+@media screen and (max-width:1069px)
+  .slick-last-posts
+    .slick-slide
+      width: 230px
+    .slick-prev, .slick-next
+      top: 46.5%
+
+@media screen and (max-width:767px)
+  .slick-last-posts
+    .slick-slide
+      width: 216px
+    .slick-prev, .slick-next
+      top: 44%
+
+@media screen and (max-width:474px)
+  .slick-last-posts
+    .slick-slide
+      width: 300px
+    .slick-prev, .slick-next
+      top: 55%
+  .slick-banner
+    margin-bottom: .5em
+    &:after
+      content: ''
+      display: block
+      width: 100%
+      height: 1px
+      background-color: #F0F0F0
+    .slick-banner-prev, .slick-banner-next
+      display: block
+      top: calc(100% - 45px)
+    .slick-banner-prev
+      left: 0
+    .banner-info
+      padding: 10px
+      span
+        &:after
+          display: none
+        &.time
+          display: inline-block
+          font-weight: normal
+          +opacity(.6)
+          margin-left: 1em
+      p
+        display: none
+    .mobile-title
+      display: block
+      color: #25282A
+      font-size: 1.2em
+      line-height: 1.5em
+      padding: 1em 0
+      margin-bottom: 2em

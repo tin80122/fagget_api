@@ -1,0 +1,189 @@
+/* --- menu style 2 & 3 & 5 & 6 & 7 & 8 & 9 & 10 --- */
+.style_2.menu_container
+{
+	background: #F0F0F0;
+	border-color: #F0F0F0;
+}
+.style_2 .sf-menu
+{
+	border-top: 3px solid #E0E0E0;
+}
+.style_2 .sf-menu li
+{
+	background-color: #F0F0F0;
+	border-bottom-color: #F0F0F0;
+	border-top-color: #E0E0E0;	
+}
+.style_2 .sf-menu>li
+{
+	margin-top: -3px;
+}
+.style_2 .sf-menu li.submenu a,
+.style_7 .sf-menu li.selected.submenu a,
+.style_7 .sf-menu li.submenu:hover a
+{
+	background-image: url("../images/icons/navigation/menu_arrow.png");
+}
+.style_2 .sf-menu a:hover,
+.style_3 .sf-menu a:hover
+{
+	background-color: #ED1C24;
+}
+.style_2 .sf-menu li:hover, .style_2 .sf-menu li.selected,
+.style_2 .sf-menu li.submenu:hover,
+.style_2 .sf-menu li:hover a, .style_2 .sf-menu li.selected a,
+.style_2 .sf-menu li.submenu:hover a,
+.style_3 .sf-menu li:hover, .style_3 .sf-menu li.selected,
+.style_3 .sf-menu li.submenu:hover,
+.style_3 .sf-menu li:hover a, .style_3 .sf-menu li.selected a,
+.style_3 .sf-menu li.submenu:hover a,
+.style_5 .sf-menu li:hover, .style_5 .sf-menu li.selected,
+.style_5 .sf-menu li.submenu:hover,
+.style_5 .sf-menu li:hover a, .style_5 .sf-menu li.selected a,
+.style_5 .sf-menu li.submenu:hover a,
+.style_10 .sf-menu li:hover, .style_10 .sf-menu li.selected,
+.style_10 .sf-menu li.submenu:hover,
+.style_10 .sf-menu li:hover a, .style_10 .sf-menu li.selected a,
+.style_10 .sf-menu li.submenu:hover a
+{
+	background-color: #ED1C24;
+	border-top-color: #ED1C24;
+	border-bottom-color: #ED1C24;
+}
+.style_2 .sf-menu li.selected.submenu a,
+.style_2 .sf-menu li.submenu:hover a,
+.style_3 .sf-menu li.selected.submenu a,
+.style_3 .sf-menu li.submenu:hover a,
+.style_5 .sf-menu li.submenu a,
+.style_6 .sf-menu li.selected.submenu a,
+.style_6 .sf-menu li.submenu:hover a,
+.style_7 .sf-menu li.submenu a,
+.style_8 .sf-menu li.selected.submenu a,
+.style_8 .sf-menu li.submenu:hover a,
+.style_9 .sf-menu li.submenu a,
+.style_10 .sf-menu li.selected.submenu a,
+.style_10 .sf-menu li.submenu:hover a
+{
+	background-image: url("../images/icons/navigation/dark_bg/menu_arrow.png");
+}
+.style_2 .sf-menu li.selected a,
+.style_2 .sf-menu li:hover a,
+.style_3 .sf-menu li.selected a,
+.style_3 .sf-menu li:hover a,
+.style_5 .sf-menu li a,
+.style_6 .sf-menu li.selected a,
+.style_6 .sf-menu li:hover a,
+.style_7 .sf-menu li a,
+.style_8 .sf-menu li.selected a,
+.style_8 .sf-menu li:hover a,
+.style_9 .sf-menu li a,
+.style_10 .sf-menu li.selected a,
+.style_10 .sf-menu li:hover a
+{
+	color: #FFF;
+}
+/* --- menu style 3 --- */
+.style_3.menu_container,
+.style_3 .sf-menu li
+{
+	border-top-color: #ED1C24;
+}
+/* --- menu style 4 --- */
+.style_4.menu_container,
+.style_4 .sf-menu li
+{
+	background-color: #F0F0F0;
+	border-color: #F0F0F0;
+}
+.style_4 .sf-menu li:hover, .style_4 .sf-menu li.selected,
+.style_4 .sf-menu li.submenu:hover,
+.style_4 .sf-menu li:hover a, .style_4 .sf-menu li.selected a,
+.style_4 .sf-menu li.submenu:hover a
+{
+	background-color: #FFF;
+	border-bottom-color: #FFF;
+	border-top-color: #ED1C24;
+}
+/* --- menu style 5 & 7 & 9 & 10 --- */
+.style_5.menu_container,
+.style_5 .sf-menu li,
+.style_7.menu_container,
+.style_7 .sf-menu li,
+.style_9.menu_container,
+.style_9 .sf-menu li
+{
+	background-color: #363B40;
+	border-color: #363B40;
+}
+.style_5 .sf-menu a:hover,
+.style_10 .sf-menu a:hover
+{
+	background-color: #ED1C24;
+}
+/* --- menu style 6 --- */
+.style_6 .sf-menu
+{
+	margin-top: 0;
+}
+.style_6.menu_container,
+.style_6 .sf-menu li
+{
+	border-bottom-color: #363B40;
+	border-top: none;
+}
+.style_6.menu_container
+{
+	border-bottom-width: 3px;
+}
+.style_6 .sf-menu a:hover
+{
+	background-color: #363B40;
+}
+.style_6 .sf-menu li:hover, .style_6 .sf-menu li.selected,
+.style_6 .sf-menu li.submenu:hover,
+.style_6 .sf-menu li:hover a, .style_6 .sf-menu li.selected a,
+.style_6 .sf-menu li.submenu:hover a
+{
+	background-color: #363B40;
+}
+/* --- menu style 7 --- */
+.style_7 .sf-menu a:hover
+{
+	background-color: #25282A;
+}
+.style_7 .sf-menu li:hover, .style_7 .sf-menu li.selected,
+.style_7 .sf-menu li.submenu:hover,
+.style_7 .sf-menu li:hover a, .style_7 .sf-menu li.selected a,
+.style_7 .sf-menu li.submenu:hover a
+{
+	background-color: #FFF;
+	border-top-color: #FFF;
+	border-bottom-color: #FFF;
+	color: #25282A;
+}
+/* --- menu style 8 & 9 & 10 --- */
+.style_8 .sf-menu li,
+.style_8.menu_container,
+.style_10 .sf-menu li,
+.style_10.menu_container
+{
+	border-top-color: #FFF;
+}
+.style_8 .sf-menu a:hover,
+.style_9 .sf-menu a:hover
+{
+	background-color: #42494F;
+}
+.style_8 .sf-menu li:hover, .style_8 .sf-menu li.selected,
+.style_8 .sf-menu li.submenu:hover,
+.style_8 .sf-menu li:hover a, .style_8 .sf-menu li.selected a,
+.style_8 .sf-menu li.submenu:hover a,
+.style_9 .sf-menu li:hover, .style_9 .sf-menu li.selected,
+.style_9 .sf-menu li.submenu:hover,
+.style_9 .sf-menu li:hover a, .style_9 .sf-menu li.selected a,
+.style_9 .sf-menu li.submenu:hover a
+{
+	background-color: #42494F;
+	border-top-color: #42494F;
+	border-bottom-color: #42494F;
+}
