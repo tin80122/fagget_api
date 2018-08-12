@@ -10,14 +10,14 @@ use Dingo\Api\Routing\Helpers;
 use Validator;
 use Log;
 use DB;
-
-
-use App\Models\User as User;
+use App\Models\Wesite_User as Wesite_User;
 
 class MemberController extends Controller
 {
 	use Helpers;
-
+	function __construct(){
+		Log::useFiles(storage_path().'/member/token.log');
+	}
 	
 	/*|
 	 *| login 會員登入
@@ -35,7 +35,7 @@ class MemberController extends Controller
 		
 		// input
 		$request_data = $request->all();		
-		
+		Log::info("request".json_encode($request_data));
 		$validator= Validator::make($request_data,config('validation.login'));
 		
 		if(!empty($request_data) && $validator->fails()==false){
@@ -46,7 +46,7 @@ class MemberController extends Controller
 			$result = "";
 			
 		
-			$Logins = User::where('email','=',$email)->take(1)->get();
+			$Logins = Wesite_User::where('email','=',$email)->take(1)->get();
 			
 			//預設狀態
 			$responseTrue= [
@@ -83,6 +83,7 @@ class MemberController extends Controller
 				}
 				
 			}	
+			Log::info("request".json_encode($this->response->array($responseTrue)));
 			return $this->response->array($responseTrue)->setStatusCode(200);
 			
 		}
@@ -97,7 +98,7 @@ class MemberController extends Controller
 		// 資料驗證失敗
 		if ($validator->fails())
 		{
-			return $this->response->array(config('validation.ValidateError'))->setStatusCode(400);
+			return $this->response->array($validator->messages())->setStatusCode(400);
 		}
 	}
 	
@@ -116,8 +117,9 @@ class MemberController extends Controller
 		$response       = array();
 		
 		$request_data = $request->all();
+		Log::info("request".json_encode($request_data));
+
 		$validator= Validator::make($request_data,config('validation.registerMember'));
-		
 		if(!empty($request_data) && $validator->fails()==false){
 			
 			//篩選傳入column 相對應動作
@@ -157,7 +159,7 @@ class MemberController extends Controller
 			
 			
 			//判斷重複
-			$User_login = User::select('email')->where('email','=',$User_Email)->count();
+			$User_login = Wesite_User::select('email')->where('email','=',$User_Email)->count();
 			
 			if($User_login > 0){
 				$responseTrue= [
@@ -171,22 +173,23 @@ class MemberController extends Controller
 				//加密密碼
 				$User_Passwd = md5($User_Passwd);
 				try{
-					User::create([
+
+					Wesite_User::create([
 	                    'name'=>$User_Name,
 	                    'email'=>$User_Email,
 	                    'password'=>$User_Passwd
 
 		            ]);
-					
 					$responseTrue= [
 							"Status"=>"ok",
 							"Status_code" => "1000",
 					];
 				}catch (\Exception $e){
+					Log::info("user_name".$e->getMessage());
 					DB::rollBack();
 					$responseTrue= [
 							"Status"=>"ok",
-							"Status_code" => "1000",
+							"Status_code" => "1200",
 							"result" => $e->getMessage()
 					];
 					
@@ -212,7 +215,7 @@ class MemberController extends Controller
 		// 資料驗證失敗
 		if ($validator->fails())
 		{
-			return $this->response->array(config('validation.ValidateError'))->setStatusCode(400);
+			return $this->response->array($validator->messages())->setStatusCode(400);
 		}
 	}
 	

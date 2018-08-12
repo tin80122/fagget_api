@@ -4,8 +4,6 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Model\Aorus_Care_Shopping;
-use Dompdf\Exception;
 use Illuminate\Http\Request;
 use Dingo\Api\Routing\Helpers;
 use Validator;
@@ -18,13 +16,14 @@ class ArticleController extends Controller
 {
 
     use Helpers;
-
+ 
     public function createArticle(Request $request){
         // Variable
         $response       = array();
         
         // input
         $request_data = $request->all();
+        Log::info("request".json_encode($request_data));
         $validator= Validator::make($request_data,config('validation.createArticle'));
         if(!empty($request_data)){
             
@@ -53,7 +52,7 @@ class ArticleController extends Controller
         // 資料驗證失敗
         if ($validator->fails())
         {
-            return $this->response->array(config('validation.ValidateError'))->setStatusCode(400);
+            return $this->response->array($validator->messages())->setStatusCode(400);
         }
     }
 
@@ -100,7 +99,7 @@ class ArticleController extends Controller
         // 資料驗證失敗
         if ($validator->fails())
         {
-            return $this->response->array(config('validation.ValidateError'))->setStatusCode(400);
+            return $this->response->array($validator->messages())->setStatusCode(400);
         }
     }
 }

@@ -49,7 +49,7 @@ class CategoryController extends Controller
         // 資料驗證失敗
         if ($validator->fails())
         {
-            return $this->response->array(config('validation.ValidateError'))->setStatusCode(400);
+            return $this->response->array($validator->messages())->setStatusCode(400);
         }
     }
 
@@ -90,7 +90,7 @@ class CategoryController extends Controller
         // 資料驗證失敗
         if ($validator->fails())
         {
-            return $this->response->array(config('validation.ValidateError'))->setStatusCode(400);
+            return $this->response->array($validator->messages())->setStatusCode(400);
         }
     }
 }
