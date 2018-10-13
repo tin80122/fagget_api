@@ -21,7 +21,7 @@ class ArticleController extends Controller
     use Helpers;
 
     function __construct(){
-        Log::useFiles(storage_path().'/logs/member/article.log');
+        Log::useFiles(storage_path().'/logs/article/article.log');
     }
     
 
@@ -35,14 +35,15 @@ class ArticleController extends Controller
         // input
         $request_data = $request->all();
         $validator= Validator::make($request_data,config('validation.createArticle'));
-        Log::info("request_data".json_encode($request_data))
+        Log::info("request_data".json_encode($request_data));
+        Log::info("category_id".$Decrypt_post->decrypt($request_data['category_id']));
         if(!empty($request_data)){
             
             Article::create([
                     'title'=>$Decrypt_post->decrypt($request_data['title']),
                     'article'=>$Decrypt_post->decrypt($request_data['article']),
                     'user_id'=>$Decrypt_post->decrypt($request_data['user_id']),
-                    'category_id'=>$Decrypt_post->decrypt($request_data['category_id'])
+                    'categoray_id'=>$Decrypt_post->decrypt($request_data['category_id'])
 
             ]);
             
