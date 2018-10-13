@@ -11,12 +11,13 @@ use Validator;
 use Log;
 use DB;
 use App\Models\Wesite_User as Wesite_User;
+use App\Library\Encryption as Encryption;
 
 class MemberController extends Controller
 {
 	use Helpers;
 	function __construct(){
-		Log::useFiles(storage_path().'/member/token.log');
+		Log::useFiles(storage_path().'/member/member.log');
 	}
 	
 	/*|
@@ -31,7 +32,8 @@ class MemberController extends Controller
 	{
 		// Variable
 		$response       = array();
-		
+		$Decrypt_post = new Encryption(env('MEMBER_HASH_KEY'));
+
 		
 		// input
 		$request_data = $request->all();		
@@ -41,8 +43,8 @@ class MemberController extends Controller
 		if(!empty($request_data) && $validator->fails()==false){
 			
 			//篩選傳入column 相對應動作
-			$email = $request_data['email'];
-			$password =  $request_data['password'];
+			$email = $Decrypt_post->decrypt($request_data['email']);
+			$password =  $Decrypt_post->decrypt($request_data['password']);
 			$result = "";
 			
 		
@@ -115,7 +117,8 @@ class MemberController extends Controller
 	public function registerMember(Request $request){
 		// Variable
 		$response       = array();
-		
+		$Decrypt_post = new Encryption(env('MEMBER_HASH_KEY'));
+
 		$request_data = $request->all();
 		Log::info("request".json_encode($request_data));
 
@@ -124,9 +127,9 @@ class MemberController extends Controller
 			
 			//篩選傳入column 相對應動作
 			
-			$User_Name = $request_data['name'];
-			$User_Email = $request_data['email'];
-			$User_Passwd = $request_data['password'];
+			$User_Name = $Decrypt_post->decrypt($request_data['name']);
+			$User_Email = $Decrypt_post->decrypt($request_data['email']);
+			$User_Passwd = $Decrypt_post->decrypt($request_data['password']);
 			
 			//預設狀態
 			$responseTrue= [

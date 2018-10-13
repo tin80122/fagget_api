@@ -20,7 +20,7 @@ $api = app('Dingo\Api\Routing\Router');
 $api->version('v1', function ($api) {
 	$api->post('register_token','App\Http\Controllers\Auth\AuthenticateController@register');
 	$api->post('test_token','App\Http\Controllers\Auth\AuthenticateController@authenticate');
-	//$api->group(['middleware'=>'jwt.auth'],function ($api){
+	$api->group(['middleware'=>'jwt.auth'],function ($api){
 		$api->post('register','App\Http\Controllers\Auth\AuthenticateController@register');
 
 		$api->post('add_article', 'App\Http\Controllers\Auth\ArticleController@createArticle');
@@ -32,5 +32,5 @@ $api->version('v1', function ($api) {
 		$api->post('register_member', 'App\Http\Controllers\Auth\MemberController@registerMember');
 		$api->post('login', 'App\Http\Controllers\Auth\MemberController@login');
 
-	//});
+	});
 });
