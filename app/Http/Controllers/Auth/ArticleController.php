@@ -20,6 +20,11 @@ class ArticleController extends Controller
 
     use Helpers;
 
+    function __construct(){
+        Log::useFiles(storage_path().'/logs/member/article.log');
+    }
+    
+
     public function createArticle(Request $request){
 
         
@@ -30,6 +35,7 @@ class ArticleController extends Controller
         // input
         $request_data = $request->all();
         $validator= Validator::make($request_data,config('validation.createArticle'));
+        Log::info("request_data".json_encode($request_data))
         if(!empty($request_data)){
             
             Article::create([
@@ -82,7 +88,7 @@ class ArticleController extends Controller
                         [$request_data['column'],'like','%'.$request_data['text'].'%']
                 ])->take(100)->get();
             }
-            Log::info(json_encode($Message));        
+            Log::info("Message".json_encode($Message));        
             $Message = $Decrypt_post->encrypt(json_encode($Message));    
             //ok
             $responseTrue= [

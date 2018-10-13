@@ -70,10 +70,12 @@ class MemberController extends Controller
 					if(isset($Logins[0]->User_Name)){
 						$result["user_name"] = $Logins[0]->User_Name;
 					}
+					$Message = $result['user_id'];
 					//ok
 					$responseTrue = [
 							"Status"=>"Ok",
 							"Status_code" => "1000"
+							"Login"=>$Message
 					];
 
 					if($Logins[0]->password != $password){
