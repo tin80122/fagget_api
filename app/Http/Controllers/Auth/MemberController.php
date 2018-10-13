@@ -17,7 +17,7 @@ class MemberController extends Controller
 {
 	use Helpers;
 	function __construct(){
-		Log::useFiles(storage_path().'/member/member.log');
+		Log::useFiles(storage_path().'/logs/member/member.log');
 	}
 	
 	/*|
@@ -46,6 +46,8 @@ class MemberController extends Controller
 			$email = $Decrypt_post->decrypt($request_data['email']);
 			$password =  $Decrypt_post->decrypt($request_data['password']);
 			$result = "";
+			Log::info("email".$email);
+			Log::info("password".$password);
 			
 		
 			$Logins = Wesite_User::where('email','=',$email)->take(1)->get();
@@ -130,7 +132,10 @@ class MemberController extends Controller
 			$User_Name = $Decrypt_post->decrypt($request_data['name']);
 			$User_Email = $Decrypt_post->decrypt($request_data['email']);
 			$User_Passwd = $Decrypt_post->decrypt($request_data['password']);
-			
+			Log::info("User_Name".$User_Name);
+			Log::info("User_Email".$User_Email);
+			Log::info("User_Passwd".$User_Passwd);
+
 			//預設狀態
 			$responseTrue= [
 					"Status"=>"fail",
