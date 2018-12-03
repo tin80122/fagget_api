@@ -8,6 +8,7 @@ use App\Model\Aorus_Care_Shopping;
 use Dompdf\Exception;
 use Illuminate\Http\Request;
 use Dingo\Api\Routing\Helpers;
+use App\Library\Encryption as Encryption;
 use Validator;
 use Log;
 
@@ -19,20 +20,30 @@ class ArticleController extends Controller
 
     use Helpers;
 
+    function __construct(){
+        Log::useFiles(storage_path().'/logs/article/article.log');
+    }
+    
+
     public function createArticle(Request $request){
+
+        
         // Variable
         $response       = array();
-        
+        $Decrypt_post = new Encryption(env('MEMBER_HASH_KEY'));
+
         // input
         $request_data = $request->all();
         $validator= Validator::make($request_data,config('validation.createArticle'));
+        Log::info("request_data".json_encode($request_data));
+        Log::info("category_id".$Decrypt_post->decrypt($request_data['category_id']));
         if(!empty($request_data)){
             
             Article::create([
-                    'title'=>$request_data['title'],
-                    'article'=>$request_data['article'],
-                    'user_id'=>$request_data['user_id'],
-                    'category_id'=>$request_data['category_id']
+                    'title'=>$Decrypt_post->decrypt($request_data['title']),
+                    'article'=>$Decrypt_post->decrypt($request_data['article']),
+                    'user_id'=>$Decrypt_post->decrypt($request_data['user_id']),
+                    'categoray_id'=>$Decrypt_post->decrypt($request_data['category_id'])
 
             ]);
             
@@ -61,10 +72,11 @@ class ArticleController extends Controller
     {
         // Variable
         $response       = array();
-
+        $Decrypt_post = new Encryption(env('MEMBER_HASH_KEY'));
         
         // input
         $request_data = $request->all();
+
         $validator= Validator::make($request_data,config('validation.getArticle'));
         
         if(!empty($request_data) && $validator->fails()==false){
@@ -77,8 +89,8 @@ class ArticleController extends Controller
                         [$request_data['column'],'like','%'.$request_data['text'].'%']
                 ])->take(100)->get();
             }
-                
-                
+            Log::info("Message".json_encode($Message));        
+            $Message = $Decrypt_post->encrypt(json_encode($Message));    
             //ok
             $responseTrue= [
                     "Status"=>"Ok",
